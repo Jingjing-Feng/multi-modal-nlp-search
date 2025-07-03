@@ -68,6 +68,9 @@ export PYTHONPATH=$(pwd)  # Use absolute path of the project root
 python processor/processor.py --folder_path ./sample_folder [--overwrite]
 ```
 
+After processing, you can view the indexed files in Kibana at:
+- Kibana Dashboard: [http://localhost:5601/app/home](http://localhost:5601/app/home)
+
 4. Launch the application:
 ```bash
 chainlit run app.py -w

@@ -2,6 +2,7 @@
 # For each file, process it and save the embedding to elasticsearch.
 
 import os
+
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 import argparse
@@ -15,7 +16,7 @@ from embedding_converter import (
     convert_audio_to_text,
     convert_image_to_text,
     convert_pdf_to_text,
-    # convert_video_to_text,
+    convert_video_to_text,
 )
 from model.sbert import SBertModel
 from rich.progress import Progress
@@ -72,9 +73,9 @@ def process_file(file_path: str) -> bool:
     elif extension in [".png", ".jpg", ".jpeg"]:
         # process image file
         text = convert_image_to_text(file_path)
-    # elif extension == ".mp4":
-    #     # process video file
-    #     text = convert_video_to_text(file_path)
+    elif extension == ".mp4":
+        # process video file
+        text = convert_video_to_text(file_path)
     else:
         raise ValueError(f"Should not reach here.")
 
